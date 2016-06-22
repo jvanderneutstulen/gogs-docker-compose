@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  gogs:
+    restart: always
+    image: jvanderneutstulen/gogs
+    ports:
+        - "3022:22"
+        - "80:3000"
+    volumes:
+        - /srv/docker/gogs:/data
+    environment:
+        USERMAP_UID: 501
+        USERMAP_GID: 501
+
+        GOGS_APP_NAME: 'My Gog Site'
+        GOGS_OFFLINE_MODE: 'true'
+
+        GOGS_DOMAIN: 'example.com'
+        GOGS_ROOT_URL: 'http://example.com/'
+
+        GOGS_MAIL_ENABLED: 'true'
+        GOGS_MAIL_HOST: 'smtp.example.com:25'
+        GOGS_MAIL_FROM: '"GOGS" <noreply@example.com>'
+        GOGS_MAIL_SKIP_VERIFY: 'true'
+
